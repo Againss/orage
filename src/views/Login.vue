@@ -4,31 +4,56 @@
       <el-form-item>
         <img src="../assets/Again.jpg" alt="" class="avatar">
       </el-form-item>
-      <el-form-item prop='useName'>
-        <el-input v-model="form.useName" placeholder="账户" prefix-icon="iconfont icon-user-girl"></el-input>
+      <el-form-item prop='username'>
+        <el-input v-model="form.username" placeholder="账户" prefix-icon="iconfont icon-user-girl"></el-input>
       </el-form-item>
-      <el-form-item prop='passWord'>
-        <el-input v-model="form.passWord" placeholder="密码" prefix-icon="iconfont icon-key"></el-input>
+      <el-form-item prop='password'>
+        <el-input v-model="form.password" placeholder="密码" prefix-icon="iconfont icon-key" type="password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" class="login-btn">登录</el-button>
+        <el-button type="primary" class="login-btn" @click="submitForm('form')">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
+import { checkUser } from "@/api";
 export default {
   data: () => ({
     form: {
-      useName: "",
-      passWord: ""
+      username: "",
+      password: ""
     },
     rules: {
-      useName: [{ required: true, message: "请输入账户名", trigger: "blur" }],
-      passWord: [{ required: true, message: "请输入密码", trigger: "blur" }]
+      username: [{ required: true, message: "请输入账户名", trigger: "blur" }],
+      password: [{ required: true, message: "请输入密码", trigger: "blur" }]
     }
   }),
-  components: {}
+  components: {},
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          checkUser(this.form).then(res => {
+            if (res.data.meta.status === 200) {
+              localStorage.setItem("mytoken",res.data.data.token)
+              this.$router.push({
+                name: "user"
+              });
+            } else {
+              this.$message({
+                message: res.data.meta.msg,
+                type: "warning"
+              });
+            }
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    }
+  }
 };
 </script>
 <style lang="less" scoped>

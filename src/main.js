@@ -8,10 +8,25 @@ import "./style/index.less"
 import App from './App'
 import router from './router'
 
-Vue.use(ElementUI);
+Vue.use(ElementUI); 
 
 
 Vue.config.productionTip = false
+
+//全局守卫,防止用户没有登录跳转页面
+router.beforeEach((to, from, next) => {
+ let token = localStorage.getItem('mytoken');
+ if(token){
+   next()
+ }else{
+   if(to.path !== '/login'){
+     next({path:'/login'})
+   }else{
+     next()
+   }
+ }
+})
+
 
 /* eslint-disable no-new */
 new Vue({
