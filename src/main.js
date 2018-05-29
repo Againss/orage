@@ -7,6 +7,7 @@ import "../src/assets/font/iconfont.css"
 import "./style/index.less"
 import App from './App'
 import router from './router'
+import store from './store/store.js'
 
 Vue.use(ElementUI); 
 
@@ -32,6 +33,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
