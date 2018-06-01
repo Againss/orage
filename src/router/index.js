@@ -4,7 +4,15 @@ import Login from '@/views/Login'
 
 import user from '@/views/user'
 import welcome from '@/views/welcome/welcome'
+import userInfo from '@/views/userList/userInfo'
+import Right from '@/views/right/Rights'
+import Role from '@/views/right/Roles'
 
+
+// //测试
+// import add from '@/test/increment'
+// import de from '@/test/decrement'
+//end
 Vue.use(Router)
 
 
@@ -14,15 +22,46 @@ export default new Router({
       name: 'Login',
       component: Login
     },
+    //测试
+    // {
+    //   path: '/de',
+    //   name: 'de',
+    //   component: de,
+    //   children:[
+    //     {
+    //   path: '',
+    //   name: 'add',
+    //   component: add
+    // }
+    //   ]
+    // },
+    //end
+
     {
       path: '/',
       name: 'user',
       component: user,
-      redirect:{path:'/welcome'},
+      redirect: {
+        path: '/welcome'
+      },
       children: [{
         path: 'welcome',
-        component:welcome
-      }]
+        component: welcome
+      },
+      {
+        path: 'userInfo',
+        component: userInfo
+      },
+      {
+        path:'right',
+        component:Right
+      },
+      {
+        path: 'role',
+        component: Role
+      }
+
+    ]
     }
 
   ]

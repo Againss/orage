@@ -37,6 +37,8 @@ export default {
           checkUser(this.form).then(res => {
             if (res.data.meta.status === 200) {
               localStorage.setItem("mytoken",res.data.data.token)
+              console.log(res.data.data)
+              this.$store.commit('setUsername',res.data.data.username)
               this.$router.push({
                 name: "user"
               });

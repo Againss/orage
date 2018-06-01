@@ -2,27 +2,38 @@
   <div class="home">
     <el-container>
       <el-aside width="auto">
-        <el-menu default-active="2" class="el-menu-admin" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse">
+        <el-menu default-active="/userInfo"
+         class="el-menu-admin" 
+         @open="handleOpen" 
+         @close="handleClose" 
+         :router=true
+         :unique-opened="true"
+         background-color="#545c64" 
+         text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse">
           <el-menu-item index='5' class='logo'>
             <div></div>
           </el-menu-item>
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>导航一</span>
+              <span>用户管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="/userInfo">用户列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>权限管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/right">权限列表</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/role">角色列表</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <el-container>
@@ -31,7 +42,7 @@
           <div class="system-title">电商后台管理系统</div>
           <div>
             <span class="welcome">
-              您好，老哥哥
+              您好，{{getterusername}}
             </span>
             <el-button type="text" @click='logout'>退出</el-button>
           </div>
@@ -44,7 +55,13 @@
   </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
+   computed:{
+    ...mapGetters([
+      'getterusername'
+    ]),
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -87,6 +104,17 @@ export default {
   .el-aside {
     background-color: #545c64;
   }
+  
+element.style {
+    background-color: rgb(84, 92, 100);
+}
+.home .el-menu-admin[data-v-67648dff]:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+}
+.el-menu{
+  border:0;
+}
   .el-menu-admin:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
@@ -121,6 +149,9 @@ export default {
       background: url(../assets/Again.jpg) center center;
       background-size: cover;
     }
+  } 
+  .el-main {
+    background-color:#f1f1f1;
   }
 }
 </style>
