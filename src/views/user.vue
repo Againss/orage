@@ -86,7 +86,7 @@ export default {
           this.$router.push({path:'/login'})
         }).catch(() => {
           this.$message({
-            type: 'info',
+            type: 'info', 
             message: '取消退出'
           });          
         });

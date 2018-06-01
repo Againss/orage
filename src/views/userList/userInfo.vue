@@ -304,14 +304,6 @@ export default {
     width: 300px;
   }
 }
-.el-breadcrumb {
-  background-color: #d3dce6;
-  height: 45px;
-  font-size: 15px;
-  padding-left: 10px;
-  line-height: 45px;
-  margin-bottom: 15px;
-}
 .el-pagination {
   background-color: #d3dce6;
   padding: 10px;

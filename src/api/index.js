@@ -48,3 +48,11 @@ export const getRole = params => {
 export const setRole = params =>{
   return axios.put(`users/${params.id}/role`,params).then(res=>res.data)
 }
+//获取权限列表
+export const getRights = params => {
+  return axios.get(`rights/${params.type}`,params).then(res => res.data)
+}
+//删除角色制指定权限
+export const deleteRight = params => {
+  return axios.delete(`roles/${params.roleId}/rights/${params.rightId}`, params).then(res => res.data)
+}

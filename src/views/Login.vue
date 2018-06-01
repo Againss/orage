@@ -8,7 +8,7 @@
         <el-input v-model="form.username" placeholder="账户" prefix-icon="iconfont icon-user-girl"></el-input>
       </el-form-item>
       <el-form-item prop='password'>
-        <el-input v-model="form.password" placeholder="密码" prefix-icon="iconfont icon-key" type="password"></el-input>
+        <el-input v-model="form.password" placeholder="密码" prefix-icon="iconfont icon-key" type="password" @keydown.native.enter="submitForm('form')"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="login-btn" @click="submitForm('form')">登录</el-button>
