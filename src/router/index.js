@@ -10,6 +10,10 @@ import Role from '@/views/right/Roles'
 
 import categories from '@/views/category/categories'
 
+import goods from '@/views/goods/goods'
+
+import addgoods from '@/views/goods/addGoods'
+
 
 
 
@@ -49,29 +53,36 @@ export default new Router({
         path: '/welcome'
       },
       children: [{
-        path: 'welcome',
-        component: welcome
-      },
-      {
-        path: 'users',
-        component: userInfo
-      },
-      {
-        path:'rights',
-        component:Right
-      },
-      {
-        path: 'roles',
-        component: Role
-      },
-      {
-        path: 'categories',
-        component: categories
+          path: 'welcome',
+          component: welcome
+        },
+        {
+          path: 'users',
+          component: userInfo
+        },
+        {
+          path: 'rights',
+          component: Right
+        },
+        {
+          path: 'roles',
+          component: Role
+        },
+        {
+          path: 'categories',
+          component: categories
+        },
+        {
+          path: 'goods',
+          component: goods
+        },
+        {
+          path: 'toadd',
+          component: addgoods
+        },
 
-      }
 
-
-    ]
+      ]
     }
 
   ]

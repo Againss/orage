@@ -64,4 +64,13 @@ export const giveRight  = params => {
 export const getMenus =() => {
   return axios.get('menus').then(res => res.data)
 }
+//获取菜单权限
+export const getCategories = params => {
+  return axios.get('categories', params).then(res => res.data)
+}
+//设置分类
+export const setCategories = params => {
+  return axios.post('categories', params).then(res => res.data)
+}
+
 
