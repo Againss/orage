@@ -8,6 +8,10 @@ import userInfo from '@/views/userList/userInfo'
 import Right from '@/views/right/Rights'
 import Role from '@/views/right/Roles'
 
+import categories from '@/views/category/categories'
+
+
+
 
 // //测试
 // import add from '@/test/increment'
@@ -49,17 +53,23 @@ export default new Router({
         component: welcome
       },
       {
-        path: 'userInfo',
+        path: 'users',
         component: userInfo
       },
       {
-        path:'right',
+        path:'rights',
         component:Right
       },
       {
-        path: 'role',
+        path: 'roles',
         component: Role
+      },
+      {
+        path: 'categories',
+        component: categories
+
       }
+
 
     ]
     }
